@@ -1,15 +1,3 @@
-# umi project
+A font end web application for JWT authorization
 
-## Getting Started
-
-Install dependencies,
-
-```bash
-$ yarn
-```
-
-Start the dev server,
-
-```bash
-$ yarn start
-```
+based on umi, react, sass
