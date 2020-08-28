@@ -1,0 +1,15 @@
+@import '~antd/dist/antd.css';
+
+html,
+body {
+  background-color: #f0f2f5;
+}
+
+.normal {
+  padding: 10px;
+
+  .title {
+    background: dodgerblue;
+    color: #fff;
+  }
+}
