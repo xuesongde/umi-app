@@ -1,5 +1,16 @@
-.layout {
-  .content {}
+.noLimit_container {
+  flex: 1;
 
-  .footer {}
+  .side_content {
+    display: flex;
+    flex-direction: row;
+
+    .side {
+      flex-basis: 200px;
+    }
+
+    .content {
+      flex: 1;
+    }
+  }
 }

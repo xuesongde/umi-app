@@ -2,7 +2,8 @@ import request from '@utils/request';
 
 export function postLogin(payload) {
   return request({
-    url: '/user/login',
+    url: '/signin',
     data: { ...payload },
+    method: 'post',
   });
 }

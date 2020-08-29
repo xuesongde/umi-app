@@ -5,7 +5,7 @@ import './header.scss';
 import { Link } from 'umi';
 class CommonHeader extends React.Component {
   state = {
-    current: 'mail',
+    current: 'Login',
   };
   handleClick = e => {
     console.log('click ', e);
@@ -20,7 +20,12 @@ class CommonHeader extends React.Component {
         <Link to="/" className="navbar_logo">
           Wolf Alone
         </Link>
-        <Menu mode="horizontal" defaultSelectedKeys={['Login']}>
+        <Menu
+          mode="horizontal"
+          defaultSelectedKeys={['Login']}
+          selectedKeys={[this.state.current]}
+          onClick={this.handleClick}
+        >
           {routers.map((item, index) => (
             <Menu.Item key={item.name}>
               <Link to={item.path} className="link_item">

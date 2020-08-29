@@ -10,10 +10,18 @@ import {
   Checkbox,
   Button,
   AutoComplete,
+  Alert,
+  message,
 } from 'antd';
 import './index.scss';
 import { postRegister } from './service';
 import { ParamsType } from './types';
+import { history } from 'umi';
+
+interface RegisterCallbackData {
+  code: number;
+  message: string;
+}
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -40,14 +48,39 @@ const tailFormItemLayout = {
 const RegistrationForm = () => {
   const [form] = Form.useForm();
   const [checked, setChecked] = useState(false);
+  const [formTip, setFormTip] = useState({
+    isShowTip: false,
+    tipContent: '',
+  });
   const onFinish = (values: any) => {
     values.isAgreed = +values.isAgreed;
     console.log('Received values of form: ', values);
     postRegister(values)
-      .then((data: object) => {
+      .then((data: RegisterCallbackData) => {
         console.log('register callback...', data);
+        const { code, message } = data;
+        if (code === 200000) {
+          history.push('/login');
+        } else {
+          setFormTip({
+            isShowTip: true,
+            tipContent: message,
+          });
+        }
+      })
+      .catch((err: Error) => {
+        console.error(err);
       })
       .finally(() => {});
+  };
+
+  const onFill = () => {
+    form.setFieldsValue({
+      userName: '185217985@qq.com',
+      passWord: '111111',
+      confirm: '111111',
+      isAgreed: true,
+    });
   };
 
   return (
@@ -60,6 +93,10 @@ const RegistrationForm = () => {
         />
       </div>
       <div className="form_container">
+        {formTip.isShowTip && (
+          <Alert message={formTip.tipContent} type="error" />
+        )}
+
         <Form
           className="form_style"
           {...formItemLayout}
@@ -148,8 +185,15 @@ const RegistrationForm = () => {
             </Checkbox>
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit" disabled={!checked}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              // disabled={!checked}
+            >
               Register
+            </Button>
+            <Button type="link" htmlType="button" onClick={onFill}>
+              Fill form
             </Button>
           </Form.Item>
         </Form>
