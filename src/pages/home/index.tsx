@@ -55,12 +55,12 @@ class Home extends React.Component {
   };
   delete = (userName: string) => {
     console.log(userName);
-    // deleteByUserName(userName).then(data => {
-    //   console.log(data);
-    //   // if (code == 200000) {
-    //   //   message.success(message);
-    //   // }
-    // });
+    deleteByUserName(userName).then(data => {
+      console.log(data);
+      if (data.code == 200000) {
+        this.getTableData();
+      }
+    });
   };
   componentDidMount() {
     this.getTableData();

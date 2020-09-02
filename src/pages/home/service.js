@@ -9,7 +9,7 @@ export function getTableData(payload) {
 
 export function deleteByUserName(payload) {
   return request({
-    url: '/users?userId=' + payload,
+    url: '/deleteByUserName/' + payload,
     data: { ...payload },
     method: 'delete',
   });
