@@ -5,7 +5,7 @@ import { message } from 'antd';
 const baseConfig = {
   baseURL: ENV_HOST.host,
   timeout: 10000,
-  headers: { 'x-access-token': localStorage.getItem('token') },
+  headers: { 'x-access-token': localStorage.getItem('accessToken') },
 };
 const request = params => {
   try {
@@ -20,9 +20,17 @@ const request = params => {
       console.log(callBackData);
       const { status, data } = callBackData;
       if (status === 200) {
-        return new Promise((resolve, reject) => {
-          resolve(data);
-        });
+        if (data.code == 200000 || data.code == 300000) {
+          return new Promise((resolve, reject) => {
+            resolve(data);
+          });
+        }
+        if (data.code == 400000) {
+          history.push('/login');
+          return new Promise((resolve, reject) => {
+            reject(data);
+          });
+        }
       } else {
         message.error(data.message);
       }

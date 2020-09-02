@@ -21,4 +21,8 @@ export default defineConfig({
       pathRewrite: { '^/my-server': '' },
     },
   },
+  dva: {
+    immer: true,
+    hmr: false,
+  },
 });

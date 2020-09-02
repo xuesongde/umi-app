@@ -1,7 +1,29 @@
-.normal {
-  padding: 10px;
-  .title {
-    background: dodgerblue;
-    color: #fff;
+.login_container {
+  display: flex;
+  background: #fff;
+  padding: 20px 5px;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+
+  .trade_mark {
+    width: 280px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    margin-left: 50px;
+
+    .mark_image {
+      width: 100%;
+      display: none;
+    }
+  }
+
+  .form_container {
+    width: 40vw;
+
+    .form_style {
+      width: 100%;
+    }
   }
 }

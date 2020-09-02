@@ -87,7 +87,7 @@ const RegistrationForm = () => {
     <div className="register_container">
       <div className="trade_mark">
         <img
-          src={require('./images/logo_wolf.jpg')}
+          src={require('../../images/logo_wolf.jpg')}
           alt=""
           className="mark_image"
         />

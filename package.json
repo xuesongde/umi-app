@@ -36,6 +36,9 @@
     "yorkie": "^2.0.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2"
-  }
+    "@umijs/plugin-dva": "^0.8.2",
+    "cross-env": "^7.0.2",
+    "redux-logger": "^3.0.6"
+  },
+  "__npminstall_done": false
 }

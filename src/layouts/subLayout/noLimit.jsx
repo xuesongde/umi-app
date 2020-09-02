@@ -1,10 +1,6 @@
 import { Layout, Menu } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
-import {
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-} from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import './noLimit.scss';
 import WithAuth from '../withAuth/withAuth';
 import CommonHeader from './components/header.jsx';

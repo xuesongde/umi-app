@@ -2,19 +2,25 @@ import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
 const { Header } = Layout;
 import './header.scss';
-import { Link } from 'umi';
+import { Link, history } from 'umi';
+import { IndexModelState, ConnectProps, Loading, connect } from 'umi';
 class CommonHeader extends React.Component {
   state = {
-    current: 'Login',
+    current: this.props.currentRouter,
   };
   handleClick = e => {
-    console.log('click ', e);
-    this.setState({
-      current: e.key,
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'setSelectedRouter',
+      payload: { currentRouter: e.key },
     });
   };
+  componentDidMount() {
+    console.log('componentDidMount... header...');
+    console.log(this.props);
+  }
   render() {
-    const { routers } = this.props;
+    const { routers, currentRouter } = this.props;
     return (
       <Header className="header">
         <Link to="/" className="navbar_logo">
@@ -23,11 +29,11 @@ class CommonHeader extends React.Component {
         <Menu
           mode="horizontal"
           defaultSelectedKeys={['Login']}
-          selectedKeys={[this.state.current]}
+          selectedKeys={[currentRouter]}
           onClick={this.handleClick}
         >
           {routers.map((item, index) => (
-            <Menu.Item key={item.name}>
+            <Menu.Item key={item.path}>
               <Link to={item.path} className="link_item">
                 {item.name}
               </Link>
@@ -38,4 +44,6 @@ class CommonHeader extends React.Component {
     );
   }
 }
-export default CommonHeader;
+export default connect(({ app: { currentRouter } }) => ({
+  currentRouter,
+}))(CommonHeader);
