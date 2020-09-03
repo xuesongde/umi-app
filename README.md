@@ -8,3 +8,4 @@ protected view: home page
 
 if user has logined then show home page and register page, if not show login page and register page
 
+![Image](https://github.com/xuesongde/umi-app/blob/master/readme_img/token.png)
