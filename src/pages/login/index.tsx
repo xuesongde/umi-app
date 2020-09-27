@@ -49,7 +49,7 @@ const Login = () => {
         const { code, accessToken, message } = data;
         if (code === 200000) {
           localStorage.setItem('accessToken', accessToken);
-          history.push('/home');
+          window.location.href = '/home';
         } else {
           setFormTip({
             isShowTip: true,

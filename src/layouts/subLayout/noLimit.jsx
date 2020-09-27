@@ -5,10 +5,11 @@ import './noLimit.scss';
 import WithAuth from '../withAuth/withAuth';
 import CommonHeader from './components/header.jsx';
 import routerList from '@config/limit_router.json';
+import { Link } from 'umi';
 
 const { SubMenu } = Menu;
 const NoLimit = function({ props }) {
-  console.log(props);
+  console.log('noLimit....', props);
   return (
     <>
       <div className="noLimit_container">
@@ -17,21 +18,23 @@ const NoLimit = function({ props }) {
           <Sider className="side">
             <Menu
               mode="inline"
-              defaultSelectedKeys={['1']}
+              defaultSelectedKeys={[location.pathname]}
               defaultOpenKeys={['sub1']}
               style={{ height: '100%' }}
             >
-              <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
-                <Menu.Item key="1">option1</Menu.Item>
-                <Menu.Item key="2">option2</Menu.Item>
-                <Menu.Item key="3">option3</Menu.Item>
-                <Menu.Item key="4">option4</Menu.Item>
+              <SubMenu key="sub1" icon={<UserOutlined />} title="users">
+                <Menu.Item key="/home">
+                  <Link to={'/home'}>home</Link>
+                </Menu.Item>
+                <Menu.Item key="/userSque">
+                  <Link to={'/userSque'}>user sque</Link>
+                </Menu.Item>
               </SubMenu>
             </Menu>
           </Sider>
           <Content className="content">{props.children}</Content>
         </div>
-        <Footer className="footer">Footer</Footer>
+        <Footer className="footer">wrote by xsd</Footer>
       </div>
     </>
   );

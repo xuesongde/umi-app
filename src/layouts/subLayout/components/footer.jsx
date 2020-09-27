@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
 const { Footer } = Layout;
 import './footer.scss';
-import { Link } from 'umi';
+
 class CommonFooter extends React.Component {
   render() {
     const { routers } = this.props;

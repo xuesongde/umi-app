@@ -1,0 +1,37 @@
+.user_sque {
+  width: 89vw;
+  margin-bottom: 71px;
+
+  .ant-table-body {
+    scrollbar-color: orange dodgerblue;
+    scrollbar-width: thin;
+  }
+
+  .ant-table-body::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  .ant-table-body::-webkit-scrollbar-track {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: dodgerblue;
+  }
+
+  .ant-table-body::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: orange;
+  }
+
+  .ant-table-body::-webkit-scrollbar-thumb:hover {
+    background: orange;
+  }
+
+  .ant-table-body::-webkit-scrollbar-thumb:window-inactive {
+    background: #333;
+  }
+
+  .ant-table-cell {
+    border-bottom: 1px solid #fff !important;
+  }
+}
