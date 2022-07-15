@@ -68,8 +68,8 @@ const loopTravelTree=(tree)=>{
     }
     return res;
 }
-// get the most deepth of binary tree
-const getDeepth=(tree,prop)=>{
+// get the nodes number
+const getNodesNum=(tree,prop)=>{
     const res = [];
     const traverseTreeNode =(treeNode)=>{
         res.push(treeNode.val);
@@ -81,10 +81,25 @@ const getDeepth=(tree,prop)=>{
     traverseTreeNode(tree[prop]);
     return res.length;
 }
+// which has more nodes
+const whichMore=(tree)=>{
+    const leftDeepth = getNodesNum(tree, 'left');
+    const rightDeepth = getNodesNum(tree, 'right');
+    return leftDeepth > rightDeepth ? 'left' : 'right';
+}
+// get the most deepth of binary tree
 const getMaxDeepth=(tree)=>{
-    const leftDeepth = getDeepth(tree, 'left');
-    const rightDeepth = getDeepth(tree, 'right');
-    return leftDeepth > rightDeepth ? leftDeepth : rightDeepth;
+    let res = 0;
+    const traverseTree =(treeNode, times = 1)=>{
+        if(!treeNode) return;
+        if(!treeNode.left && !treeNode.right){
+            res = Math.max(res, times);
+        }
+        treeNode.left && traverseTree(treeNode.left, times+1);
+        treeNode.right && traverseTree(treeNode.right, times+1);
+    }
+    traverseTree(tree, 1);
+    return res;
 }
 
 export default debounce;
