@@ -101,5 +101,36 @@ const getMaxDeepth=(tree)=>{
     traverseTree(tree, 1);
     return res;
 }
-
+// quick sort
+const quickSort =(arr)=>{
+    const length = arr.length;
+    if(length<2) return arr;
+    let left = 0;
+    let right = length-1;
+    let reference = arr[0];
+    let slotInLeft = true;
+    while(left != right){
+        if(slotInLeft){ // move right item to left
+            if(reference > arr[right]){
+                arr[left] = arr[right];
+                left++;
+                slotInLeft = false; // move empty slot to right
+            }else{
+                right--;
+            }
+        }else{
+            if(reference <= arr[left]){// move left item to right
+                arr[right] = arr[left];
+                right--;
+                slotInLeft = true; // move empty slot to left
+            }else{
+                left++; // next item
+            }
+        }
+    }
+    arr[left] = reference; // loop complete
+    let leftArr = arr.slice(0, left);
+    let rightArr = left == length-1? []:arr.slice(left+1, length);
+    return [...quickSort(leftArr),reference,...quickSort(rightArr)]
+}
 export default debounce;
